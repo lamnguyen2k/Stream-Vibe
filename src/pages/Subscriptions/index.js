@@ -1,5 +1,10 @@
+import Pricing from '../../components/Pricing';
 function Subscriptions() {
-    return <h1 className="my-20">Subscriptions Page</h1>;
+    return (
+        <div className="wrapper my-20">
+            <Pricing />
+        </div>
+    );
 }
 
 export default Subscriptions;

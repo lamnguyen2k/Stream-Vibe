@@ -1,5 +1,8 @@
 import imgHome from './images/Container.png';
 import iconPlay from './images/IconPlay.png';
+import Pricing from '../../components/Pricing';
+import ListCard from '../../components/ListCard';
+import Questions from '../../components/Questions';
 import { NavLink } from 'react-router-dom';
 
 function Home() {
@@ -8,15 +11,14 @@ function Home() {
             <div>
                 <img alt="" src={imgHome} />
             </div>
-
             <div>
                 <div>
-                    <div className="mx-auto max-w-7xl -mt-10">
+                    <div className="mx-auto max-w-6xl -mt-10">
                         <div className="text-center">
                             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                                 The Best Streaming Experience
                             </h1>
-                            <p className="mt-6 text-lg leading-8 text-gray-600">
+                            <p className="mt-6 text-lg leading-8 text-zinc-400">
                                 StreamVibe is the best streaming experience for watching your favorite movies and shows
                                 on demand, anytime, anywhere. With StreamVibe, you can enjoy a wide variety of content,
                                 including the latest blockbusters, classic movies, popular TV shows, and more. You can
@@ -34,6 +36,9 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <ListCard />
+            <Questions />
+            <Pricing />
         </div>
     );
 }
