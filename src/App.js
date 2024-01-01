@@ -109,73 +109,75 @@ function App() {
                     </Routes>
                 </div>
                 {/* FREE-TRAIL */}
-
-                <div className="free-trail mx-auto max-w-screen-2xl my-10">
-                    <div className="relative ">
-                        <img className="" alt="" src={freeTrailImg} />
-                        <div className="absolute flex justify-between my-20 top-0 w-5/6 h-5/6 index-1">
-                            <div className="title mx-10">
-                                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                <div>
+                    <figure className="relative max-w-screen-2xl mx-auto my-5">
+                        <NavLink href="#">
+                            <img className="" src={freeTrailImg} alt="" />
+                        </NavLink>
+                        <figcaption className="absolute lg:flex items-center justify-between w-4/5 h-full  lg: px-4 text-lg text-white top-1">
+                            <div>
+                                <h1 className="text-2xl font-bold tracking-tight text-white lg:text-6xl">
                                     Start your free trial today!
                                 </h1>
-                                <p className=" mt-6 text-lg leading-8 text-zinc-400">
+                                <p className=" mt-6 leading-8 text-zinc-400">
                                     This is a clear and concise call to action that encourages users to sign up for a
                                     free trial of StreamVibe.
                                 </p>
                             </div>
-                            <NavLink to="#" className="rounded-md my-10 px-3.5 py-2.5 text-sm font-semibold text-white">
-                                <button className="flex bg-red-600 px-5 py-3 rounded-lg justify-center ">
-                                    <span className="mx-2 font-semibold">Start a Free Trail</span>
-                                </button>
-                            </NavLink>
-                        </div>
-                    </div>
+                            <div>
+                                <NavLink
+                                    to="#"
+                                    className="rounded-md my-10 px-3.5 py-2.5 text-sm font-semibold text-white"
+                                >
+                                    <button className="flex bg-red-600 px-5 py-3 rounded-lg justify-center ">
+                                        <span className="mx-2 font-semibold">Start a Free Trail</span>
+                                    </button>
+                                </NavLink>
+                            </div>
+                        </figcaption>
+                    </figure>
                 </div>
                 {/* FOOTER APP */}
                 <footer className="bg-black dark:bg-gray-900">
-                    <div className="mx-auto w-full max-w-screen-2xl p-4 py-6 lg:py-8 flex flex-col justify-between">
-                        <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-                            <div className="flex">
-                                {menuFooter.map((value, index) => {
-                                    return (
-                                        <ul className="text-gray-500 dark:text-gray-400 font-medium mx-20" key={index}>
-                                            <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
-                                                {value.title}
-                                            </h2>
-                                            <li className="flex flex-col">
-                                                {value.value.map((link, index) => {
-                                                    return (
-                                                        <span key={index} className="">
-                                                            {link}
-                                                        </span>
-                                                    );
-                                                })}
+                    <div className="mx-auto w-full max-w-screen-2xl">
+                        <div className="grid grid-cols-2 gap-8 py-6 lg:py-8 md:grid-cols-6">
+                            {menuFooter.map((link, index) => {
+                                return (
+                                    <div key={index}>
+                                        <h2 className="mb-6 text-sm font-semibold uppercase">{link.title}</h2>
+                                        <ul className="font-medium">
+                                            <li className="mb-4 text-gray-400">
+                                                <NavLink href="#" className="flex flex-col">
+                                                    {link.value.map((link, index) => {
+                                                        return <span key={index}>{link}</span>;
+                                                    })}
+                                                </NavLink>
                                             </li>
                                         </ul>
-                                    );
-                                })}
-                                <div className="mx-10">
-                                    <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
-                                        Connect With Us
-                                    </h2>
-                                    <button className="flex ">
-                                        <img className="px-1 w-15 h-10" alt="" src={iconFb} />
-                                        <img className="px-1 w-15 h-10" alt="" src={iconTw} />
-                                        <img className="px-1 w-15 h-10" alt="" src={iconIn} />
-                                    </button>
-                                </div>
+                                    </div>
+                                );
+                            })}
+                            <div className="flex flex-col">
+                                <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">
+                                    Connect With Us
+                                </h2>
+                                <button className="flex ">
+                                    <img className="px-1 w-15 h-10" alt="" src={iconFb} />
+                                    <img className="px-1 w-15 h-10" alt="" src={iconTw} />
+                                    <img className="px-1 w-15 h-10" alt="" src={iconIn} />
+                                </button>
                             </div>
                         </div>
-                    </div>
-                    <hr className="mx-10 border-gray-500 lg:my-8" />
-                    <div className="flex justify-between mx-10 py-5 bg-black dark:bg-gray-700 md:flex md:items-center md:justify-between">
-                        <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-                            © 2023 <a href="https://flowbite.com/">streamvibe</a>. All Rights Reserved.
-                        </span>
-                        <div className="text-gray-500">
-                            <span>Terms of Use</span>
-                            <span>Privacy Policy</span>
-                            <span>Cookie Policy</span>
+                        <hr className="border-gray-500 lg:my-8" />
+                        <div className="py-6  md:flex md:items-center md:justify-between">
+                            <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
+                                © 2023 <NavLink href="https://flowbite.com/">StreamVibe</NavLink>. All Rights Reserved.
+                            </span>
+                            <div className="text-gray-500">
+                                <span className="mx-2">Terms of Use</span>
+                                <span className="mx-2">Privacy Policy</span>
+                                <span className="mx-2">Cookie Policy</span>
+                            </div>
                         </div>
                     </div>
                 </footer>
