@@ -12,7 +12,7 @@ function ListCard() {
                 <div className="py-8 mx-auto max-w-screen-1xl lg:py-16 lg:px-6">
                     <div className="flex justify-between mx-auto lg:mb-12">
                         <div className="">
-                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold">
+                            <h2 className="mb-4 text-4xl tracking-tight font-semibold">
                                 We Provide you streaming experience across various devices.
                             </h2>
                             <p className="font-light text-sm text-zinc-400">

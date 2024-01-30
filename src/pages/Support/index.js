@@ -1,20 +1,21 @@
 import Questions from '../../components/Questions';
 import imgForm from './image/SubContainer.png';
+// import imgCountry from './image/country.png';
 
 function Support() {
     return (
         <div className="wrapper my-40 max-w-screen-2xl mx-auto">
-            <div className="space-y-8 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 xl:gap-5 ">
+            <div className="space-y-10 grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 xl:gap-5 ">
                 <div className="">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold">Welcome to our support page!</h2>
+                    <h2 className="mb-4 text-4xl tracking-tight font-semibold">Welcome to our support page!</h2>
                     <p className="font-light text-sm text-zinc-400 my-5">
                         We're here to help you with any problems you may be having with our product.
                     </p>
                     <img className="w-full" alt="" src={imgForm} />
                 </div>
 
-                <form className="bg-black px-4 py-4 rounded-lg border  border-zinc-700">
-                    <div className="mb-5 flex lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 sm:gap-2 xl:gap-5 lg:space-y-0">
+                <form className="bg-black px-4 py-4 rounded-lg border  border-zinc-700 ">
+                    <div className="mb-5 flex grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 sm:gap-2 xl:gap-5 lg:space-y-0">
                         <div className="">
                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">
                                 First Name
@@ -40,7 +41,7 @@ function Support() {
                             />
                         </div>
                     </div>
-                    <div className="mb-5 flex lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 md:gap-2 xl:gap-5 lg:space-y-0">
+                    <div className="mb-5 flex grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 md:gap-2 xl:gap-5 lg:space-y-0">
                         <div className="">
                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">
                                 Email
@@ -55,21 +56,30 @@ function Support() {
                         </div>
                         <div className="">
                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">
-                                Phone Number{' '}
+                                Phone Number
                             </label>
-
                             <div className="flex">
+                                <select
+                                    id="countries"
+                                    className="bg-zinc-800 text-white text-sm rounded-md w-full p-2.5"
+                                >
+                                    <option defaultValue>Country</option>
+                                    <option value="US">United States</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="FR">France</option>
+                                    <option value="DE">Germany</option>
+                                </select>
                                 <input
                                     type="title"
                                     id="title"
-                                    className="bg-zinc-800 border border-zinc-700 text-white text-sm rounded-md  block w-full p-2.5"
+                                    className="bg-zinc-800 ml-2 border border-zinc-700 text-white text-sm rounded-md w-full p-2.5"
                                     placeholder="Enter Last Name"
                                     required
                                 />
                             </div>
                         </div>
                     </div>
-                    <label for="message" className="block mb-2 text-sm font-medium ">
+                    <label htmlFor="message" className="block mb-2 text-sm font-medium ">
                         Your message
                     </label>
                     <textarea

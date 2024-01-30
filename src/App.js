@@ -16,6 +16,9 @@ import { Dialog } from '@headlessui/react';
 import { NavLink } from 'react-router-dom';
 import { menuFooter } from './components/Footer';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const navigation = [
     { name: 'Home', to: '/' },
     { name: 'Movies & Shows', to: '/movieandshow' },
@@ -67,7 +70,7 @@ function App() {
                             </button>
                         </div>
                     </nav>
-                    <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
+                    <Dialog as="div" className="flex" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                         <div className="fixed inset-0 z-50" />
                         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-zinc-700 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                             <div className="flex items-center justify-between">
@@ -89,6 +92,7 @@ function App() {
                                             <NavLink
                                                 key={item.name}
                                                 to={item.to}
+                                                onClick={() => setMobileMenuOpen(false)}
                                                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-700"
                                             >
                                                 <span className="title-page text-white"> {item.name}</span>
@@ -100,7 +104,7 @@ function App() {
                         </Dialog.Panel>
                     </Dialog>
                 </header>
-                <div className="wrapper">
+                <div className="">
                     <Routes>
                         {publicRoutes.map((route, index) => {
                             const Page = route.component;
@@ -109,34 +113,29 @@ function App() {
                     </Routes>
                 </div>
                 {/* FREE-TRAIL */}
-                <div>
-                    <figure className="relative max-w-screen-2xl mx-auto my-5">
-                        <NavLink href="#">
-                            <img className="" src={freeTrailImg} alt="" />
-                        </NavLink>
-                        <figcaption className="absolute lg:flex items-center justify-between w-4/5 h-full  lg: px-4 text-lg text-white top-1">
-                            <div>
-                                <h1 className="text-2xl font-bold tracking-tight text-white lg:text-6xl">
-                                    Start your free trial today!
-                                </h1>
-                                <p className=" mt-6 leading-8 text-zinc-400">
-                                    This is a clear and concise call to action that encourages users to sign up for a
-                                    free trial of StreamVibe.
-                                </p>
-                            </div>
-                            <div>
-                                <NavLink
-                                    to="#"
-                                    className="rounded-md my-10 px-3.5 py-2.5 text-sm font-semibold text-white"
-                                >
-                                    <button className="flex bg-red-600 px-5 py-3 rounded-lg justify-center ">
-                                        <span className="mx-2 font-semibold">Start a Free Trail</span>
-                                    </button>
-                                </NavLink>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </div>
+                <figure className="relative max-w-screen-2xl mx-auto my-5">
+                    <NavLink href="/">
+                        <img className="" src={freeTrailImg} alt="" />
+                    </NavLink>
+                    <figcaption className="absolute lg:flex items-center justify-between w-4/5 h-full  lg: px-4 text-lg text-white top-1">
+                        <div>
+                            <h1 className="text-2xl font-bold tracking-tight text-white lg:text-6xl">
+                                Start your free trial today!
+                            </h1>
+                            <p className=" mt-6 leading-8 text-zinc-400">
+                                This is a clear and concise call to action that encourages users to sign up for a free
+                                trial of StreamVibe.
+                            </p>
+                        </div>
+                        <div>
+                            <NavLink to="#" className="rounded-md my-10 px-3.5 py-2.5 text-sm font-semibold text-white">
+                                <button className="flex bg-red-600 px-5 py-3 rounded-lg justify-center ">
+                                    <span className="mx-2 font-semibold">Start a Free Trail</span>
+                                </button>
+                            </NavLink>
+                        </div>
+                    </figcaption>
+                </figure>
                 {/* FOOTER APP */}
                 <footer className="bg-black dark:bg-gray-900">
                     <div className="mx-auto w-full max-w-screen-2xl">

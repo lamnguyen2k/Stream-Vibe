@@ -1,142 +1,124 @@
-import imgAction from './image/Container.png';
-import iconNavigation from './image/IndicatorsContainer.png';
-
-import imgAdvanture from './image/Container1.png';
-import imgComedy from './image/Container2.png';
-import imgDrama from './image/Container3.png';
-import imgHorror from './image/Container4.png';
-
-import closer from './image/IconCloser.png';
-
 import { NavLink } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import Slider from 'react-slick';
 
-function CategoryFilm() {
+import iconPrev from './image/IconRight.png';
+import iconNext from './image/IconLeft.png';
+
+function CategoryFilm(props) {
+    const slider = useRef(null);
+    const [activeDot, setActiveDot] = useState(0);
+
+    const dots = [];
+    const itemLength = props.items.length;
+    for (let i = 0; i <= itemLength - 1; i++) {
+        dots[i] = i += 4;
+    }
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        arrows: false,
+        slidesToShow: props.slidesToShow,
+        slidesToScroll: 5,
+        ref: slider,
+
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 1008,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                },
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                },
+            },
+        ],
+        beforeChange: (current, next) => {
+            setActiveDot(next);
+        },
+    };
+
+    const handleDotClick = (index) => {
+        slider.current.slickGoTo(index);
+    };
+
+    const handlePrev = () => {
+        slider.current.slickPrev();
+    };
+
+    const handleNext = () => {
+        slider.current.slickNext();
+    };
+
     return (
-        <div className="wrapper">
-            <section className="max-w-screen-2xl mx-auto">
-                <div className="py-8 mx-auto max-w-screen-1xl lg:py-16 lg:px-6">
-                    <div className="flex justify-between mx-auto lg:mb-12">
-                        <div className="">
-                            <h2 className="mb-4 text-4xl tracking-tight font-extrabold">
-                                Explore our wide variety of categories
-                            </h2>
-                            <p className="font-light text-sm text-zinc-400">
-                                Whether you're looking for NavLink comedy to make you laugh, NavLink drama to make you
-                                think, or NavLink documentary to learn something new
-                            </p>
-                        </div>
-                        <nav aria-label="Page navigation example">
-                            <div className="bg-zinc-800 px-0.5 py-0.5 rounded-md">
-                                <ul className="flex items-center -space-x-px h-8 bg-black px-2 py-6 rounded-md">
-                                    <li>
-                                        <NavLink
-                                            href="#"
-                                            className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-zinc-800 rounded-md"
-                                        >
-                                            <span className="sr-only">Previous</span>
-                                            <svg
-                                                className="w-2.5 h-2.5 rtl:rotate-180 text-white"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 6 10"
-                                            >
-                                                <path
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M5 1 1 5l4 4"
-                                                />
-                                            </svg>
-                                        </NavLink>
-                                    </li>
-                                    <li>
-                                        <NavLink
-                                            href="#"
-                                            className="flex items-center justify-center mx-2 leading-tight text-red"
-                                        >
-                                            <img alt="" src={iconNavigation} />
-                                        </NavLink>
-                                    </li>
-
-                                    <li>
-                                        <NavLink
-                                            href="#"
-                                            className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-zinc-800 rounded-md"
-                                        >
-                                            <span className="sr-only">Next</span>
-                                            <svg
-                                                className="w-2.5 h-2.5 rtl:rotate-180 text-white"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 6 10"
-                                            >
-                                                <path
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="m1 9 4-4-4-4"
-                                                />
-                                            </svg>
-                                        </NavLink>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
+        <div className="max-w-screen-2xl mx-auto">
+            <div className="my-20">
+                <div className="flex justify-between mx-6 lg:mb-12 my-10">
+                    <div className="">
+                        <h2 className="mb-4 text-3xl tracking-tight font-semibold">{props.title}</h2>
                     </div>
-                    <div className="space-y-8 lg:grid xl:grid-cols-5 ls:grid-cols-5 md:grid-cols-2 md:gap-5 xl:gap-10 lg:space-y-0">
-                        {/* <!-- CategoryFilm Card --> */}
-                        <div className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 ">
-                            <img className="" alt="" src={imgAction} />
-                            <div className="flex justify-between py-1">
-                                <p>Action</p>
-                                <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
-                                    <img alt="" src={closer} />
-                                </NavLink>
-                            </div>
+
+                    <div
+                        className="flex bg-black rounded-lg px-2 py-2 border border-zinc-700 "
+                        style={{ textAlign: 'center' }}
+                    >
+                        <button onClick={handlePrev} className="hidden lg:flex">
+                            <img
+                                className="px-2 py-2 rounded-lg bg-zinc-700 active:bg-zinc-800"
+                                alt=""
+                                src={iconPrev}
+                            />
+                        </button>
+                        <div className="flex items-center mx-1 hidden lg:flex">
+                            {dots.map((dot, index) => (
+                                <div
+                                    key={index}
+                                    className={`dot ${index === activeDot ? 'actives' : ''}`}
+                                    onClick={() => handleDotClick(index)}
+                                ></div>
+                            ))}
                         </div>
-                        <div className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 ">
-                            <img className="" alt="" src={imgAdvanture} />
-                            <div className="flex justify-between py-1">
-                                <p>Advanture</p>
-                                <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
-                                    <img alt="" src={closer} />
-                                </NavLink>
-                            </div>
-                        </div>
-                        <div className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 ">
-                            <img className="" alt="" src={imgComedy} />
-                            <div className="flex justify-between py-1">
-                                <p>Comedy</p>
-                                <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
-                                    <img alt="" src={closer} />
-                                </NavLink>
-                            </div>
-                        </div>
-                        <div className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 ">
-                            <img className="" alt="" src={imgDrama} />
-                            <div className="flex justify-between py-1">
-                                <p>Drama</p>
-                                <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
-                                    <img alt="" src={closer} />
-                                </NavLink>
-                            </div>
-                        </div>
-                        <div className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 ">
-                            <img className="" alt="" src={imgHorror} />
-                            <div className="flex justify-between py-1">
-                                <p>Horror</p>
-                                <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
-                                    <img alt="" src={closer} />
-                                </NavLink>
-                            </div>
-                        </div>
+                        <button onClick={handleNext} className="hidden lg:flex">
+                            <img
+                                className="px-2 py-2 rounded-lg bg-zinc-700 active:bg-zinc-800"
+                                alt=""
+                                src={iconNext}
+                            />
+                        </button>
                     </div>
                 </div>
-            </section>
+                <Slider {...settings} className="my-10 mx-4">
+                    {props.items.map((value, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 "
+                            >
+                                <img className="" alt="" src={value.img} />
+                                <div className="flex justify-between py-1">
+                                    <p>{value.title}</p>
+                                    <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
+                                        <img alt="" src={value.iconShows} />
+                                    </NavLink>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </Slider>
+            </div>
         </div>
     );
 }
