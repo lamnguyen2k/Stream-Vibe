@@ -1,14 +1,18 @@
 import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { NavLink } from 'react-router-dom';
-
+// import ShowMovie from '../ShowMovie';
+import img from './image/Container (1).png';
 import iconPrev from './image/IconPrev.png';
 import iconNext from './image/IconNext.png';
+import iconTime from './image/IconTime.png';
+import iconView from './image/IconView.png';
+
+import { Rating } from 'react-simple-star-rating';
 
 const CustomSlider = (props) => {
     const slider = useRef(null);
     const [activeDot, setActiveDot] = useState(0);
-
     const dots = [];
     const itemLength = props.items.length;
     for (let i = 0; i <= itemLength - 1; i++) {
@@ -22,8 +26,8 @@ const CustomSlider = (props) => {
         slidesToShow: props.slidesToShow,
         slidesToScroll: 5,
         ref: slider,
-        autoplay: true,
-        autoplaySpeed: 5000,
+        // autoplay: true,
+        // autoplaySpeed: 5000,
         responsive: [
             {
                 breakpoint: 1200,
@@ -103,55 +107,71 @@ const CustomSlider = (props) => {
                 </div>
                 <Slider {...settings} className="my-10 mx-4">
                     {props.items.map((value, index) => {
+                        let num = (value.vote_count / 1000).toFixed(0) + 'k';
+                        // let number = value.vote_average / 2;
+                        // let roundedNumber = Math.round(number);
+                        // console.log(value.vote_average);
+
                         return (
                             <div
                                 key={index}
                                 className="cursor-pointer flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 "
                             >
-                                <img className="" alt="" src={value.img} />
+                                <NavLink to={props.goToShowMovie ? '/showmovie' : '/showmovieseason'}>
+                                    <img className="" alt="" src={img} />
+                                </NavLink>
                                 <div>
-                                    {value.Top10in && (
-                                        <span className="px-2 py-1 bg-red-600 rounded-lg">{value.Top10in}</span>
+                                    {props.top10in && (
+                                        <div className="">
+                                            <span className="px-2 py-1 bg-red-600 rounded-lg">Top 10 In</span>
+                                        </div>
                                     )}
                                 </div>
                                 <div className="">
-                                    {value.iconTime && (
-                                        <div className="flex justify-between mt-3 ">
+                                    {props.vote && (
+                                        <div className="flex justify-between mt-3">
                                             <div className="flex bg-zinc-900 border border-zinc-600 px-2 py-1 rounded-xl">
-                                                <img className="w-6 h-6 mr-1" alt="" src={value.iconTime} />
-                                                <span>{value.time}</span>
+                                                <img className="w-6 h-6 mr-1" alt="" src={iconTime} />
+                                                <span>2h 45 min</span>
                                             </div>
                                             <div className="flex bg-zinc-900 border border-zinc-600 px-2 py-1 rounded-xl">
-                                                <img className="w-6 h-6 mr-1" alt="" src={value.iconView} />
-                                                <span>{value.view}</span>
+                                                <img className="w-6 h-6 mr-1" alt="" src={iconView} />
+                                                <span className="text-white">{value.vote_count}</span>
                                             </div>
                                         </div>
                                     )}
                                 </div>
                                 <div className="">
-                                    {value.release && (
+                                    {props.released && (
                                         <div className="flex justify-center mt-2 bg-zinc-900 border border-zinc-600 px-2 py-1 rounded-xl">
-                                            <span className="text-zinc-400 mr-1">{value.content}</span>
-                                            <span>{value.release}</span>
+                                            <span className="text-zinc-400 mr-1">Released at</span>
+                                            <span>{value.release_date}</span>
                                         </div>
                                     )}
                                 </div>
                                 <div className="">
-                                    {value.num && (
-                                        <div className="flex justify-between mt-3 ">
+                                    {props.voteCount && (
+                                        <div className="flex justify-between mt-3">
                                             <div className="flex bg-zinc-900 border border-zinc-600 px-2 py-1 rounded-xl">
-                                                <img className="w-6 h-6 mr-1" alt="" src={value.iconTimes} />
-                                                <span>{value.times}</span>
+                                                <img className="w-6 h-6 mr-1" alt="" src={iconTime} />
+                                                <span>2 h 45 min</span>
                                             </div>
                                             <div className="flex item-center bg-zinc-900 border border-zinc-600 px-2 py-1 rounded-xl">
-                                                <img className="w-21 h-5 mr-1" alt="" src={value.iconStart} />
-                                                <span>{value.num}</span>
+                                                <Rating
+                                                    size={20}
+                                                    transition={true}
+                                                    readonly={true}
+                                                    fillColor={'#ff0000'}
+                                                    initialValue={1}
+                                                />
+
+                                                <span>{num}</span>
                                             </div>
                                         </div>
                                     )}
                                 </div>
                                 <div className="flex justify-between py-1">
-                                    <p>{value.title}</p>
+                                    <p>{value.name}</p>
                                     <NavLink to="" className="flex justify-center text-sm font-semibold text-white">
                                         <img alt="" src={value.iconShows} />
                                     </NavLink>

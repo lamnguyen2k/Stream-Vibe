@@ -10,10 +10,12 @@ import imgComedy from './images/Containers2.png';
 import imgDrama from './images/Containers3.png';
 import imgHorror from './images/Containers4.png';
 import iconNext from './images/IconLeft.png';
-
+import axios from './axios';
 import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function Home() {
+    const [ourGenres, setOurGenres] = useState([]);
     const OurGenres = [
         { title: 'Action', img: imgAction, iconShows: iconNext },
         { title: 'Adventure', img: imgAdvanture, iconShows: iconNext },
@@ -25,6 +27,12 @@ function Home() {
         { title: 'Horror', img: imgHorror, iconShows: iconNext },
         { title: 'Horror', img: imgHorror, iconShows: iconNext },
     ];
+    useEffect(() => {
+        axios.get('/3/genre/movie/list').then((res) => {
+            setOurGenres(res.data.genres);
+        });
+    });
+
     return (
         <div className="wrapper">
             <div className="">
@@ -51,7 +59,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <CategoryFilm items={OurGenres} slidesToShow={5} />
+            <CategoryFilm items={ourGenres} slidesToShow={5} />
             <ListCard />
             <Questions />
             <Pricing />

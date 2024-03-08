@@ -9,6 +9,7 @@ import avatar from './image/people.png';
 import iconStar from './image/IconStart.png';
 import { useState, useRef } from 'react';
 import star5 from './image/Star 5.png';
+import Cast from '../../Cast';
 
 import { NavLink } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -66,22 +67,22 @@ function MovieAndShow() {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 1008,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 800,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 },
             },
         ],
@@ -102,7 +103,7 @@ function MovieAndShow() {
     };
 
     return (
-        <div className="wrapper max-w-screen-2xl mx-auto">
+        <div className="wrapper max-w-screen-2xl mx-auto mt-40 full-screen">
             <div className="lg:max-w-screen-2xl max-w-screen-full relative mx-auto">
                 <img alt="" src={imgContainer} />
                 <div className="text-center absolute bottom-1">
@@ -142,33 +143,8 @@ function MovieAndShow() {
                             spirituality, fate and folklore rule the lands.
                         </span>
                     </div>
-                    <div className="flex flex-col bg-zinc-800 rounded-lg mt-5">
-                        <div className="mx-10 my-10">
-                            <div className="flex justify-between">
-                                <span className="text-zinc-400">Cast</span>
-                                <div className="">
-                                    <button className="bg-zinc-900 px-2 py-2 rounded-3xl mr-5">
-                                        <img className="" alt="" src={iconRight} />
-                                    </button>
+                    <Cast />
 
-                                    <button className="bg-zinc-900 px-2 py-2 rounded-3xl mr-5">
-                                        <img className="" alt="" src={IconLeft} />
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="flex max-w-screen-2xl mx-auto mt-5">
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                                <img className="w-30 h-30 mr-3" alt="" src={avatar} />
-                            </div>
-                        </div>
-                    </div>
                     <div className="flex flex-col bg-zinc-800 rounded-lg mt-5">
                         <div className="flex justify-between ml-10 my-10">
                             <span className="text-zinc-400">Reviews</span>
@@ -179,7 +155,7 @@ function MovieAndShow() {
                         <Slider {...settings}>
                             {reviews.map((value, index) => {
                                 return (
-                                    <div key={index} className="p-3 bg-zinc-950 rounded-lg">
+                                    <div key={index} className="p-3 mx-auto bg-zinc-950 rounded-lg">
                                         <div className="flex justify-between mb-5">
                                             <div className="flex flex-col">
                                                 <span>{value.name}</span>
@@ -196,7 +172,7 @@ function MovieAndShow() {
                             })}
                         </Slider>
                         <div className="flex justify-center rounded-lg px-2 py-2 mt-5" style={{ textAlign: 'center' }}>
-                            <button onClick={handlePrev} className="bg-zinc-900 rounded-3xl">
+                            <button onClick={handlePrev} className="bg-zinc-900 rounded-3xl mr-5 lg:mr-0">
                                 <img className="px-2 py-2" alt="" src={iconRight} />
                             </button>
                             <div className="flex items-center mx-1 hidden lg:flex">
@@ -214,7 +190,7 @@ function MovieAndShow() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-zinc-800 rounded-lg">
+                <div className="bg-zinc-800 mx-auto rounded-lg">
                     <div className=" m-10">
                         <div className="flex mb-5">
                             <img alt="" src={vector} />

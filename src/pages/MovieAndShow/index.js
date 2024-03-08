@@ -38,7 +38,8 @@ import iconStart from './image/IconStart.png';
 import iconNext from './image/IconLeft.png';
 
 import { NavLink } from 'react-router-dom';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import axios from './axios.js';
 
 import Slider from 'react-slick';
 
@@ -46,9 +47,20 @@ import CustomSlider from '../../components/Slick/index.js';
 
 function MovieAndShow() {
     const slider = useRef(null);
-    const dots = [];
-    const [activeDot, setActiveDot] = useState(0);
-
+    const [genres, setGenres] = useState([]);
+    const [topRate, setTopRate] = useState([]);
+    const [trending, setTrending] = useState([]);
+    useEffect(() => {
+        axios.get('/3/genre/movie/list').then((res) => {
+            setGenres(res.data.genres);
+        });
+        axios.get('/3/movie/popular').then((res) => {
+            setTrending(res.data.results);
+        });
+        axios.get('/3/movie/top_rated').then((res) => {
+            setTopRate(res.data.results);
+        });
+    });
     const OurGenres = [
         { title: 'Action', img: imgAction, iconShows: iconNext },
         { title: 'Adventure', img: imgAdvanture, iconShows: iconNext },
@@ -61,39 +73,67 @@ function MovieAndShow() {
         { title: 'Horror', img: imgHorror, iconShows: iconNext },
     ];
 
-    const PopularTopInGenres = [
-        { title: 'Action', img: imgAction1, iconShows: iconNext, Top10in: 'Top 10 in' },
-        { title: 'Adventure', img: imgComedy3, iconShows: iconNext, Top10in: 'Top 10 in' },
-        { title: 'Comedy', img: imgAction1, iconShows: iconNext, Top10in: 'Top 10 in' },
-        { title: 'Drama', img: imgDrama4, iconShows: iconNext, Top10in: 'Top 10 in' },
-        { title: 'Action', img: imgHorror5, iconShows: iconNext, Top10in: 'Top 10 in' },
-        { title: 'Action', img: imgAction, iconShows: iconNext, Top10in: 'Top 10 in' },
-    ];
+    const PopularTopInGenres = [{ Top10in: 'Top 10 in' }];
 
     const TrendingNow = [
-        { img: imgfilm1, iconTime: iconTime, iconView: iconView, time: '1h 30min', view: '2k' },
-        { img: imgfilm2, iconTime: iconTime, iconView: iconView, time: '1h 57min', view: '1.5k' },
-        { img: imgfilm3, iconTime: iconTime, iconView: iconView, time: '2h 10min', view: '1.8k' },
-        { img: imgfilm4, iconTime: iconTime, iconView: iconView, time: '2h 20min', view: '3k' },
-        { img: imgfilm5, iconTime: iconTime, iconView: iconView, time: '1h 40min', view: '5k' },
-        { img: imgfilm4, iconTime: iconTime, iconView: iconView, time: '1h min', view: '2k' },
+        { img: imgfilm1, iconTime: iconTime, iconView: iconView, time: '1h 30min', view: '2k', goToShowMovie: true },
+        { img: imgfilm2, iconTime: iconTime, iconView: iconView, time: '1h 57min', view: '1.5k', goToShowMovie: true },
+        { img: imgfilm3, iconTime: iconTime, iconView: iconView, time: '2h 10min', view: '1.8k', goToShowMovie: true },
+        { img: imgfilm4, iconTime: iconTime, iconView: iconView, time: '2h 20min', view: '3k', goToShowMovie: true },
+        { img: imgfilm5, iconTime: iconTime, iconView: iconView, time: '1h 40min', view: '5k', goToShowMovie: true },
+        { img: imgfilm4, iconTime: iconTime, iconView: iconView, time: '1h min', view: '2k', goToShowMovie: true },
     ];
 
     const NewReleases = [
-        { img: imgfilm6, content: 'Released at ', release: '14 April 2023' },
-        { img: imgfilm7, content: 'Released at ', release: '22 April 2023' },
-        { img: imgfilm8, content: 'Released at ', release: '13 April 2023' },
-        { img: imgfilm9, content: 'Released at ', release: '19 April 2023' },
-        { img: imgfilm10, content: 'Released at ', release: '11 April 2023' },
-        { img: imgfilm9, content: 'Released at ', release: '14 April 2023' },
+        { img: imgfilm6, content: 'Released at ', release: '14 April 2023', goToShowMovie: true },
+        { img: imgfilm7, content: 'Released at ', release: '22 April 2023', goToShowMovie: true },
+        { img: imgfilm8, content: 'Released at ', release: '13 April 2023', goToShowMovie: true },
+        { img: imgfilm9, content: 'Released at ', release: '19 April 2023', goToShowMovie: true },
+        { img: imgfilm10, content: 'Released at ', release: '11 April 2023', goToShowMovie: true },
+        { img: imgfilm9, content: 'Released at ', release: '14 April 2023', goToShowMovie: true },
     ];
 
     const MustWatchMovies = [
-        { img: imgfilms, iconTimes: iconTime, times: '1h 30min', iconStart: iconStart, num: '20k' },
-        { img: imgfilms, iconTimes: iconTime, times: '1h 30min', iconStart: iconStart, num: '20k' },
-        { img: imgfilms, iconTimes: iconTime, times: '1h 30min', iconStart: iconStart, num: '20k' },
-        { img: imgfilms, iconTimes: iconTime, times: '1h 30min', iconStart: iconStart, num: '20k' },
-        { img: imgfilms, iconTimes: iconTime, times: '1h 30min', iconStart: iconStart, num: '20k' },
+        {
+            img: imgfilms,
+            iconTimes: iconTime,
+            times: '1h 30min',
+            iconStart: iconStart,
+            num: '20k',
+            goToShowMovie: true,
+        },
+        {
+            img: imgfilms,
+            iconTimes: iconTime,
+            times: '1h 30min',
+            iconStart: iconStart,
+            num: '20k',
+            goToShowMovie: true,
+        },
+        {
+            img: imgfilms,
+            iconTimes: iconTime,
+            times: '1h 30min',
+            iconStart: iconStart,
+            num: '20k',
+            goToShowMovie: true,
+        },
+        {
+            img: imgfilms,
+            iconTimes: iconTime,
+            times: '1h 30min',
+            iconStart: iconStart,
+            num: '20k',
+            goToShowMovie: true,
+        },
+        {
+            img: imgfilms,
+            iconTimes: iconTime,
+            times: '1h 30min',
+            iconStart: iconStart,
+            num: '20k',
+            goToShowMovie: true,
+        },
     ];
 
     const settings = {
@@ -127,13 +167,6 @@ function MovieAndShow() {
                 },
             },
         ],
-        beforeChange: (current, next) => {
-            setActiveDot(next);
-        },
-    };
-
-    const handleDotClick = (index) => {
-        slider.current.slickGoTo(index);
     };
 
     const handlePrev = () => {
@@ -182,15 +215,7 @@ function MovieAndShow() {
                                     src={iconRight}
                                 />
                             </button>
-                            <div className="flex items-center mx-1">
-                                {dots.map((dot, index) => (
-                                    <div
-                                        key={index}
-                                        className={`dot ${index === activeDot ? 'actives' : ''}`}
-                                        onClick={() => handleDotClick(index)}
-                                    ></div>
-                                ))}
-                            </div>
+
                             <button onClick={handleNext} className="hidden lg:flex">
                                 <img
                                     className="px-2 py-2 rounded-lg bg-black active:bg-zinc-900"
@@ -236,15 +261,7 @@ function MovieAndShow() {
                                     src={iconRight}
                                 />
                             </button>
-                            <div className="flex items-center mx-1">
-                                {dots.map((dot, index) => (
-                                    <div
-                                        key={index}
-                                        className={`dot ${index === activeDot ? 'actives' : ''}`}
-                                        onClick={() => handleDotClick(index)}
-                                    ></div>
-                                ))}
-                            </div>
+
                             <button onClick={handleNext} className="hidden lg:flex">
                                 <img
                                     className="px-2 py-2 rounded-lg bg-black active:bg-zinc-900"
@@ -260,34 +277,59 @@ function MovieAndShow() {
             <div className="max-w-screen-2xl mx-auto my-20 ">
                 <div className="border relative border-zinc-700 rounded-md">
                     <span className="title absolute  left-6 -top-4 px-3 py-1 bg-red-600 rounded-md">Movies</span>
-                    <CustomSlider title={'Our Genres'} items={OurGenres} slidesToShow={5} />
+                    <CustomSlider title={'Our Genres'} items={genres} slidesToShow={5} />
                     <CustomSlider
                         className="rel"
                         title={'Popular Top 10 In Genres'}
-                        items={PopularTopInGenres}
+                        items={genres}
                         slidesToShow={4}
+                        top10in={'Top 10 in'}
                     />
-                    <CustomSlider title={'Trending Now'} items={TrendingNow} slidesToShow={5} />
-                    <CustomSlider title={'New Releases'} items={NewReleases} slidesToShow={5} />
-                    <CustomSlider title={'Must - Watch Movies'} items={MustWatchMovies} slidesToShow={4} />
+                    <CustomSlider
+                        title={'Trending Now'}
+                        items={trending}
+                        slidesToShow={5}
+                        goToShowMovie={true}
+                        vote={true}
+                    />
+                    <CustomSlider
+                        title={'New Releases'}
+                        items={topRate}
+                        slidesToShow={5}
+                        goToShowMovie={true}
+                        released={'Released'}
+                    />
+                    <CustomSlider
+                        title={'Must - Watch Movies'}
+                        items={topRate}
+                        voteCount={true}
+                        slidesToShow={4}
+                        goToShowMovie={true}
+                    />
                 </div>
             </div>
             <div className="max-w-screen-2xl mx-auto my-20 ">
                 <div className="border relative border-zinc-700 rounded-md">
                     <span className="title absolute  left-6 -top-4 px-3 py-1 bg-red-600 rounded-md">Shows</span>
-                    <CustomSlider title={'Our Genres'} items={OurGenres} slidesToShow={5} />
+                    <CustomSlider title={'Our Genres'} items={genres} slidesToShow={5} />
+
                     <CustomSlider
                         className="rel"
                         title={'Popular Top 10 In Genres'}
-                        items={PopularTopInGenres}
+                        items={genres}
                         slidesToShow={4}
+                        top10in={'Top 10 in'}
                     />
-                    <CustomSlider title={'Trending Now'} items={TrendingNow} slidesToShow={5} />
-                    <CustomSlider title={'New Releases'} items={NewReleases} slidesToShow={5} />
-                    <CustomSlider title={'Must - Watch Movies'} items={MustWatchMovies} slidesToShow={4} />
+                    <CustomSlider title={'Trending Now'} items={trending} slidesToShow={5} goToShowMovie={false} />
+                    <CustomSlider title={'New Releases'} items={topRate} slidesToShow={5} goToShowMovie={false} />
+                    <CustomSlider
+                        title={'Must - Watch Movies'}
+                        items={topRate}
+                        slidesToShow={4}
+                        goToShowMovie={false}
+                    />
                 </div>
             </div>
-            <ShowMovie />
         </div>
     );
 }

@@ -8,6 +8,7 @@ import iconFb from './image/ButtonFace.png';
 import iconTw from './image/ButtonTwitter.png';
 import iconIn from './image/ButtonIn.png';
 import freeTrailImg from './image/Background Images.png';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 import { publicRoutes } from './routes';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -24,12 +25,17 @@ const navigation = [
     { name: 'Movies & Shows', to: '/movieandshow' },
     { name: 'Support', to: '/support' },
     { name: 'Subscriptions', to: '/subscriptions' },
+    // { name: 'ShowMovieSeason', to: '/showmovieseason' },
+
+    // { name: 'ShowMovie', to: '/showmovie' },
 ];
 
 function App() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
     return (
         <Router>
+            <ScrollToTop />
             <div className="App">
                 {/* HEADER */}
                 <header className="absolute inset-x-0 top-0 z-60">
@@ -88,16 +94,18 @@ function App() {
                             <div className="mt-6 flow-root">
                                 <div className="-my-6 divide-y divide-gray-500/10">
                                     <div className="space-y-2 py-6">
-                                        {navigation.map((item) => (
-                                            <NavLink
-                                                key={item.name}
-                                                to={item.to}
-                                                onClick={() => setMobileMenuOpen(false)}
-                                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-700"
-                                            >
-                                                <span className="title-page text-white"> {item.name}</span>
-                                            </NavLink>
-                                        ))}
+                                        <Routes>
+                                            {navigation.map((item) => (
+                                                <NavLink
+                                                    key={item.name}
+                                                    to={item.to}
+                                                    onClick={() => setMobileMenuOpen(false)}
+                                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-700"
+                                                >
+                                                    <span className="title-page text-white"> {item.name}</span>
+                                                </NavLink>
+                                            ))}
+                                        </Routes>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +125,7 @@ function App() {
                     <NavLink href="/">
                         <img className="" src={freeTrailImg} alt="" />
                     </NavLink>
-                    <figcaption className="absolute lg:flex items-center justify-between w-4/5 h-full  lg: px-4 text-lg text-white top-1">
+                    <figcaption className="absolute max-w-screen-2xl mx-auto lg:flex items-center justify-between w-4/5 h-full  lg: px-4 text-lg text-white top-1">
                         <div>
                             <h1 className="text-2xl font-bold tracking-tight text-white lg:text-6xl">
                                 Start your free trial today!

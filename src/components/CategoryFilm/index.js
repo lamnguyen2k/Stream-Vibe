@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
 import Slider from 'react-slick';
-
+import imgFilm from './image/Containers.png';
 import iconPrev from './image/IconRight.png';
 import iconNext from './image/IconLeft.png';
+import iconNexts from './image/IconLeft.png';
 
 function CategoryFilm(props) {
     const slider = useRef(null);
     const [activeDot, setActiveDot] = useState(0);
-
     const dots = [];
     const itemLength = props.items.length;
     for (let i = 0; i <= itemLength - 1; i++) {
@@ -68,7 +68,9 @@ function CategoryFilm(props) {
             <div className="my-20">
                 <div className="flex justify-between mx-6 lg:mb-12 my-10">
                     <div className="">
-                        <h2 className="mb-4 text-3xl tracking-tight font-semibold">{props.title}</h2>
+                        <h2 className="mb-4 text-3xl tracking-tight font-semibold">
+                            Explore our wide variety of categories
+                        </h2>
                     </div>
 
                     <div
@@ -107,11 +109,11 @@ function CategoryFilm(props) {
                                 key={index}
                                 className=" flex-col p-6 mx-auto max-w-lg  rounded-lg bg-zinc-800 xl:p-8 dark:bg-gray-800 "
                             >
-                                <img className="" alt="" src={value.img} />
+                                <img className="" alt="" src={imgFilm} />
                                 <div className="flex justify-between py-1">
-                                    <p>{value.title}</p>
+                                    <p>{value.name}</p>
                                     <NavLink to="#" className="flex justify-center text-sm font-semibold text-white">
-                                        <img alt="" src={value.iconShows} />
+                                        <img alt="" src={iconNexts} />
                                     </NavLink>
                                 </div>
                             </div>
