@@ -1,6 +1,5 @@
 import iconRight from './image/IconRight.png';
 import IconLeft from './image/IconLeft.png';
-import avatar from './image/people.png';
 import { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from './axios.js';
@@ -8,12 +7,12 @@ import axios from './axios.js';
 import Slider from 'react-slick';
 import GetFileUrl from '../libs.js';
 
-function Cast() {
+function CastTvShow() {
     const { id } = useParams();
     const [credit, setCredit] = useState(null);
 
     useEffect(() => {
-        axios.get(`/3/movie/${id}/credits`).then((res) => {
+        axios.get(`/3/tv/${id}/credits`).then((res) => {
             setCredit(res.data);
         });
     }, [id]);
@@ -31,15 +30,15 @@ function Cast() {
         dots: false,
         infinite: true,
         arrows: false,
-        slidesToShow: 8,
-        slidesToScroll: 8,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         ref: slider,
         responsive: [
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
                 },
             },
             {
@@ -52,8 +51,8 @@ function Cast() {
             {
                 breakpoint: 800,
                 settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 },
             },
         ],
@@ -78,7 +77,7 @@ function Cast() {
                     {credit?.cast.map((value, index) => {
                         return (
                             <div key={index}>
-                                <img className=" mr-3 rounded-xl" alt="" src={GetFileUrl(value.profile_path, 'w185')} />
+                                <img className="rounded-xl" alt="" src={GetFileUrl(value.profile_path, 'w185')} />
                                 <span>{value.name}</span>
                             </div>
                         );
@@ -89,4 +88,4 @@ function Cast() {
     );
 }
 
-export default Cast;
+export default CastTvShow;

@@ -19,7 +19,10 @@ function Pricing() {
                             <NavLink to="" className="font-semibold text-white ">
                                 <div className="bg-zinc-600 px-0.5 py-0.5 rounded-lg">
                                     <div className="bg-black px-1 py-1 rounded-lg">
-                                        <button className=" text-sm font-light focus:bg-zinc-700 rounded-lg px-2 py-2">
+                                        <button
+                                            autoFocus
+                                            className="focus:outline-none text-sm font-light focus:bg-zinc-700 rounded-lg px-2 py-2"
+                                        >
                                             Month
                                         </button>
                                         <button className=" text-sm font-light focus:bg-zinc-700 rounded-lg px-2 py-2">

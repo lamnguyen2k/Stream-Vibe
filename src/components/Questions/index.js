@@ -41,7 +41,7 @@ function Questions() {
         <div className="wrapper">
             <section className="max-w-screen-2xl mx-auto">
                 <div className="py-1 mx-auto max-w-screen-1xl lg:py-16 lg:px-6">
-                    <div className="flex justify-between mx-auto lg:mb-12">
+                    <div className="flex lg: lg:flex flex justify-between mx-auto lg:mb-12">
                         <div className="">
                             <h2 className="mb-4 text-4xl tracking-tight font-semibold">Frequently Asked Questions</h2>
                             <p className="font-light text-sm text-zinc-400">

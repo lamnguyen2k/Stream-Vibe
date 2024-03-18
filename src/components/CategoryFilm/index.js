@@ -1,10 +1,9 @@
-import { NavLink } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import Slider from 'react-slick';
 import imgFilm from './image/Containers.png';
+import { default as iconNext, default as iconNexts } from './image/IconLeft.png';
 import iconPrev from './image/IconRight.png';
-import iconNext from './image/IconLeft.png';
-import iconNexts from './image/IconLeft.png';
 
 function CategoryFilm(props) {
     const slider = useRef(null);
@@ -27,15 +26,15 @@ function CategoryFilm(props) {
             {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
                 },
             },
             {
                 breakpoint: 1008,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
                 },
             },
             {
@@ -84,7 +83,7 @@ function CategoryFilm(props) {
                                 src={iconPrev}
                             />
                         </button>
-                        <div className="flex items-center mx-1 hidden lg:flex">
+                        <div className="flex items-center mx-1">
                             {dots.map((dot, index) => (
                                 <div
                                     key={index}

@@ -10,8 +10,8 @@ const publicRoutes = [
     { path: '/support', component: Support },
     { path: '/subscriptions', component: Subscriptions },
     { path: '/movieAndShow', component: MovieAndShow },
-    { path: '/showmovie', component: ShowMovie },
-    { path: '/showmovieseason', component: ShowMovieSeason },
+    { path: `/showmovie/:id`, component: ShowMovie },
+    { path: `/showmovieseason/:id`, component: ShowMovieSeason },
 ];
 
 export { publicRoutes };

@@ -98,7 +98,7 @@ function Subscriptions(contentId) {
                             <th scope="col" className="px-3 py-7 border border-zinc-600">
                                 Basic
                             </th>
-                            <th scope="col" className="px-3 py-7 border border-zinc-600">
+                            <th autoFocus scope="col" className="px-3 py-7 border border-zinc-600 focus:outline-none">
                                 Standard
                                 <span className="ml-2 text-sm rounded-sm px-1 py-1 bg-red-600">Popular</span>
                             </th>

@@ -5,7 +5,7 @@ import imgForm from './image/SubContainer.png';
 function Support() {
     return (
         <div className="wrapper my-40 max-w-screen-2xl mx-auto">
-            <div className="space-y-10 grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 xl:gap-5 ">
+            <div className="space-y-10 grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 lg:grid-cols-1 xl:gap-5 ">
                 <div className="">
                     <h2 className="mb-4 text-4xl tracking-tight font-semibold">Welcome to our support page!</h2>
                     <p className="font-light text-sm text-zinc-400 my-5">
@@ -15,7 +15,7 @@ function Support() {
                 </div>
 
                 <form className="bg-black px-4 py-4 rounded-lg border  border-zinc-700 ">
-                    <div className="mb-5 flex grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 sm:gap-2 xl:gap-5 lg:space-y-0">
+                    <div className="mb-5 flex grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 lg:grid-cols-1 sm:gap-2 xl:gap-5 lg:space-y-0">
                         <div className="">
                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">
                                 First Name
@@ -41,7 +41,7 @@ function Support() {
                             />
                         </div>
                     </div>
-                    <div className="mb-5 flex grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 md:grid-cols-1 md:gap-2 xl:gap-5 lg:space-y-0">
+                    <div className="mb-5 flex grid grid-col-1 lg:grid xl:grid-cols-2 ls:grid-cols-2 lg:grid-cols-1 lg:gap-2 xl:gap-5 lg:space-y-0">
                         <div className="">
                             <label htmlFor="email" className="block mb-2 text-sm font-medium ">
                                 Email

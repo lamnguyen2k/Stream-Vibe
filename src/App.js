@@ -25,9 +25,6 @@ const navigation = [
     { name: 'Movies & Shows', to: '/movieandshow' },
     { name: 'Support', to: '/support' },
     { name: 'Subscriptions', to: '/subscriptions' },
-    // { name: 'ShowMovieSeason', to: '/showmovieseason' },
-
-    // { name: 'ShowMovie', to: '/showmovie' },
 ];
 
 function App() {
@@ -125,29 +122,27 @@ function App() {
                     <NavLink href="/">
                         <img className="" src={freeTrailImg} alt="" />
                     </NavLink>
-                    <figcaption className="absolute max-w-screen-2xl mx-auto lg:flex items-center justify-between w-4/5 h-full  lg: px-4 text-lg text-white top-1">
-                        <div>
-                            <h1 className="text-2xl font-bold tracking-tight text-white lg:text-6xl">
+                    <figcaption className="absolute max-w-screen-2xl mx-auto lg:flex flex-row items-center lg:justify-between w-4/5 h-full  lg:px-4 text-lg text-white top-1">
+                        <div className="mt-5">
+                            <h1 className="text-2xl font-bold lg:text-left tracking-tight text-center ml-40 text-white lg:text-6xl">
                                 Start your free trial today!
                             </h1>
-                            <p className=" mt-6 leading-8 text-zinc-400">
+                            <p className=" lg:mt-6 leading-8 lg:text-left text-zinc-400 text-center ml-40">
                                 This is a clear and concise call to action that encourages users to sign up for a free
                                 trial of StreamVibe.
                             </p>
                         </div>
-                        <div>
-                            <NavLink to="#" className="rounded-md my-10 px-3.5 py-2.5 text-sm font-semibold text-white">
-                                <button className="flex bg-red-600 px-5 py-3 rounded-lg justify-center ">
-                                    <span className="mx-2 font-semibold">Start a Free Trail</span>
-                                </button>
-                            </NavLink>
-                        </div>
+                        <NavLink to="#" className="rounded-md text-sm font-semibold text-white">
+                            <button className="flex bg-red-600 lg:px-5 lg:py-3 rounded-lg px-5 py-3 ml-96 lg:-ml-10 mt-5">
+                                <span className="font-semibold text-left">Start a Free Trail</span>
+                            </button>
+                        </NavLink>
                     </figcaption>
                 </figure>
                 {/* FOOTER APP */}
                 <footer className="bg-black dark:bg-gray-900">
                     <div className="mx-auto w-full max-w-screen-2xl">
-                        <div className="grid grid-cols-2 gap-8 py-6 lg:py-8 md:grid-cols-6">
+                        <div className="grid grid-cols-2 gap-8 py-6 lg:py-8 lg:grid-cols-6">
                             {menuFooter.map((link, index) => {
                                 return (
                                     <div key={index}>
@@ -176,7 +171,7 @@ function App() {
                             </div>
                         </div>
                         <hr className="border-gray-500 lg:my-8" />
-                        <div className="py-6  md:flex md:items-center md:justify-between">
+                        <div className="py-6  lg:flex lg:items-center lg:justify-between">
                             <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
                                 © 2023 <NavLink href="https://flowbite.com/">StreamVibe</NavLink>. All Rights Reserved.
                             </span>

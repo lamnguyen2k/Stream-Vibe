@@ -1,32 +1,17 @@
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import CategoryFilm from '../../components/CategoryFilm';
+import ListCard from '../../components/ListCard';
+import Pricing from '../../components/Pricing';
+import Questions from '../../components/Questions';
+import axios from './axios';
 import imgHome from './images/Container.png';
 import iconPlay from './images/IconPlay.png';
-import Pricing from '../../components/Pricing';
-import ListCard from '../../components/ListCard';
-import Questions from '../../components/Questions';
-import CategoryFilm from '../../components/CategoryFilm';
-import imgAction from './images/Containers.png';
-import imgAdvanture from './images/Containers1.png';
-import imgComedy from './images/Containers2.png';
-import imgDrama from './images/Containers3.png';
-import imgHorror from './images/Containers4.png';
-import iconNext from './images/IconLeft.png';
-import axios from './axios';
-import { NavLink } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import CustomSlider from '../../components/Slick';
 
 function Home() {
     const [ourGenres, setOurGenres] = useState([]);
-    const OurGenres = [
-        { title: 'Action', img: imgAction, iconShows: iconNext },
-        { title: 'Adventure', img: imgAdvanture, iconShows: iconNext },
-        { title: 'Comedy', img: imgComedy, iconShows: iconNext },
-        { title: 'Drama', img: imgDrama, iconShows: iconNext },
-        { title: 'Horror', img: imgHorror, iconShows: iconNext },
-        { title: 'Horror', img: imgHorror, iconShows: iconNext },
-        { title: 'Horror', img: imgHorror, iconShows: iconNext },
-        { title: 'Horror', img: imgHorror, iconShows: iconNext },
-        { title: 'Horror', img: imgHorror, iconShows: iconNext },
-    ];
+
     useEffect(() => {
         axios.get('/3/genre/movie/list').then((res) => {
             setOurGenres(res.data.genres);
@@ -59,7 +44,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <CategoryFilm items={ourGenres} slidesToShow={5} />
+            <CustomSlider titleHome={'Explore our wide variety of categories'} items={ourGenres} slidesToShow={5} />
             <ListCard />
             <Questions />
             <Pricing />
